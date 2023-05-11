@@ -1,7 +1,7 @@
 {
+  "type": "module",
   "scripts": {
     "dev": "node --watch ./meta-tag/index.js",
     "meta": "node ./meta-tag/index.js"
-  },
-  "type": "module"
+  }
 }
