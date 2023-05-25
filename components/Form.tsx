@@ -14,12 +14,13 @@ function formatDate(str: string) {
 const Form = () => {
   const [isExists, setIsExists] = useState(false)
   const [data, setData] = useState<Email>(() => {
-    const state = localStorage.getItem('email')
+    const state = typeof window !== 'undefined' && localStorage.getItem('email')
     return state ? JSON.parse(state) : ({} as Email)
   })
 
   useEffect(() => {
-    localStorage.setItem('email', JSON.stringify(data))
+    typeof window !== 'undefined' &&
+      localStorage.setItem('email', JSON.stringify(data))
   }, [data.email])
 
   if (data.email) {
@@ -40,7 +41,11 @@ const Form = () => {
           )}
         </div>
 
-        <button type="button" className={css.button1} onClick={handleEmailReset}>
+        <button
+          type="button"
+          className={css.button1}
+          onClick={handleEmailReset}
+        >
           Use another one
         </button>
       </div>
