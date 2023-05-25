@@ -25,7 +25,7 @@ const Form = () => {
 
   if (data.email) {
     return (
-      <div>
+      <>
         <div className={css.emailStatus}>
           {isExists ? (
             <>
@@ -48,7 +48,7 @@ const Form = () => {
         >
           Use another one
         </button>
-      </div>
+      </>
     )
   }
 
@@ -74,7 +74,20 @@ const Form = () => {
 
   return (
     <form onSubmit={handleFormSubmit}>
-      <input className={css.input} type="email" name="email" />
+      <div className={css.emailStatus}>
+        We will send you an email when we will be ready!!
+      </div>
+
+      <input
+        required
+        type="email"
+        name="email"
+        className={css.input}
+        placeholder="Your email...."
+        title="Please enter a valid email"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+      />
+
       <button className={css.button2} type="submit">
         Submit
       </button>
